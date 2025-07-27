@@ -1,6 +1,7 @@
 SNDesktop – ServiceNow Desktop Notifications
 
 SNDesktop is a lightweight Python-based installer and poller program that listens for notifications from your ServiceNow instance and displays them as Windows desktop notifications.
+
 Setup
 
     Install Update Set
