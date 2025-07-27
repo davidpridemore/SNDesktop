@@ -1,10 +1,23 @@
+import sys, os
+
+# --- Fix win10toast_click pkg_resources issue when frozen ---
+try:
+    import pkg_resources
+    if getattr(sys, "frozen", False):
+        pkg_resources.resource_filename = lambda *args, **kwargs: os.path.join(
+            sys._MEIPASS, "win10toast_click", "toast.wav"
+        )
+except Exception:
+    pass
+# ------------------------------------------------------------
+
 import time
 import json
 import requests
 import logging
 import webbrowser
 from pathlib import Path
-from win10toast_click import ToastNotifier  # yes, let it warn
+from win10toast_click import ToastNotifier
 
 # ------------ config ------------
 CONFIG_FILE = Path.home() / ".sn_notifier_config.json"
@@ -70,7 +83,7 @@ def poll(instance, auth, machine_id):
                 r = requests.get(url, auth=auth, params=params, headers=headers, timeout=10)
                 r.raise_for_status()
                 data = r.json()
-                notes = data.get("result", {}).get("notifications", [])  # or just data.get("notifications", [])
+                notes = data.get("result", {}).get("notifications", [])
                 if notes:
                     for note in notes:
                         title = note.get("title", "Notice")
