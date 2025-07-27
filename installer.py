@@ -16,7 +16,7 @@ def collect_machine_facts():
     u = platform.uname()
     return {
         "hostname": os.environ.get("COMPUTERNAME") or socket.gethostname(),
-        "u_os": u.system,            # matches your ServiceNow field `u_os`
+        "u_os": u.system,
         "os_version": u.release,
         "arch": u.machine
     }
