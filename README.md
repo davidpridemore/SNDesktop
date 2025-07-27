@@ -25,7 +25,7 @@ Setup
 
 Usage
 
-    Trigger a notification in ServiceNow (e.g., a sys_email record with type = send).
+    Trigger a notification in ServiceNow (e.g., a sys_email record with type = sent).
 
     Within 10 seconds, the desktop notifier should display the message.
 
